@@ -1,0 +1,161 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link href="./favicon.svg" rel="icon" type="image/svg+xml">
+    <link href="./favicon.png" rel="icon" type="image/png">
+    <link color="#000000" href="./mask-icon.svg" rel="mask-icon">
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+    <meta content="#ffffff" name="theme-color">
+    <meta content="Playground - InterPlanetary Artificial Intelligence - Developed by Andrea Silvi" name="description">
+    <meta content="Playground - IPAI" property="og:title">
+    <meta content="https://github.com/ansi-code/ipai/raw/master/demo/web/assets/demo.png" property="og:image">
+    <meta content="Playground - InterPlanetary Artificial Intelligence - Developed by Andrea Silvi" property="og:description">
+    <meta content="https://github.com/ansi-code/ipai" property="og:url">
+    <link href="./manifest.json" rel="manifest">
+    <title>Playground - IPAI</title>
+    <link href="./style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<noscript>You need to enable JavaScript to run this app.</noscript>
+<div id="root">
+    <div class="route-container">
+        <div class="page-wrapper app-wrapper">
+            <div class="pg-root page-body full-width flush">
+                <div class="pg-main">
+                    <div class="pg-header">
+                        <div class="pg-header-section">
+                            <h4 class="pg-page-title">Playground - IPAI</h4>
+                        </div>
+                        <div class="pg-preset-select-container">
+                            <div>
+                                <label>
+                                    <select class="text-input">
+                                        <option value="0">Load preset...</option>
+                                        <option value="1">Q & A</option>
+                                    </select>
+                                </label>
+                                <div class="select-icon">
+                                    <svg fill="currentColor" height="20px" stroke="currentColor" stroke-width="0" viewBox="0 0 16 16" width="20px" xmlns="http://www.w3.org/2000/svg">
+                                        <path clip-rule="evenodd" d="M7.976 10.072l4.357-4.357.62.618L8.284 11h-.618L3 6.333l.619-.618 4.357 4.357z" fill-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="pg-body">
+                        <div class="pg-editor">
+                            <div class="pg-content-body">
+                                <div class="completions-container">
+                                    <div class="completions">
+                                        <div class="editor-container">
+                                            <div class="editor-wrapper">
+                                                <div class="DraftEditor-root">
+                                                    <div class="DraftEditor-editorContainer">
+                                                        <div class="public-DraftEditor-content" contenteditable="true" data-text="Write a tagline for an ice cream shop." id="input-content" role="textbox" spellcheck="false">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pg-content-footer">
+                                <div class="pg-footer-left">
+                                    <button class="btn btn-sm btn-filled btn-primary pg-submit-btn" id="run-button" tabindex="0" type="button">
+                                            <span class="btn-label-wrap">
+                                                <span class="btn-label-inner">Run</span>
+                                            </span>
+                                    </button>
+                                </div>
+                                <div class="pg-footer-right">
+                                    <div class="pg-token-counter visible">
+                                        <div>0</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pg-right">
+                            <div class="pg-right-content">
+                                <div class="parameter-panel">
+                                    <div class="parameter-panel-grid">
+                                        <div>
+                                            <div class="body-small control-label">Model</div>
+                                            <div class="control-note" id="model-param">ipfs://QmecpDvGdWfcKw7BM4nxyEb7TB856sTY1MqY1dCR45rWjv</div>
+                                        </div>
+                                        <div>
+                                            <span class="body-small">Temperature</span>
+                                            <label>
+                                                <input class="text-input text-input-sm" id="temperature-param" type="text" value="0.9">
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <span class="body-small">Maximum length</span>
+                                            <label>
+                                                <input class="text-input text-input-sm" id="maxlength-param" type="text" value="128">
+                                            </label>
+                                        </div>
+                                        <div class="stop-sequence-container">
+                                            <div>Stop sequences</div>
+                                            <div class="control-note">Enter sequences separated by " ; "</div>
+                                            <label>
+                                                <input class="text-input text-input-sm" id="sequences-param" type="text" value="Human: ; AI:">
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <span class="body-small">Top P</span>
+                                            <label>
+                                                <input class="text-input text-input-sm" id="topp-param" type="text" value="0.9">
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <span class="body-small">Frequency penalty</span>
+                                            <label>
+                                                <input class="text-input text-input-sm" id="freqpenalty-param" type="text" value="0">
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <span class="body-small">Presence penalty</span>
+                                            <label>
+                                                <input class="text-input text-input-sm" id="prespenalty-param" type="text" value="0">
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <span class="body-small">Best of</span>
+                                            <label>
+                                                <input class="text-input text-input-sm" id="topk-param" type="text" value="5">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pg-welcome body-small">
+                <h3>What's this?</h3>
+                <p>Developed by <a href="https://github.com/ansi-code" rel="noreferrer" target="_blank">Andrea Silvi</a></p>
+                <p>InterPlanetary Artificial Intelligence (IPAI): store your personal AI model leveraging on InterPlanetary Data Wallet (IPDW). It enables to build a real censorship resistant research swarm without centralised repositories. Browser based inferences, Personal fine-tuning,
+                    Zero-backend privacy, and much more...</p>
+                <div class="subheading">Key features</div>
+                <div class="icon-indent">
+                    <div class="icon-indent-icon">
+                        <svg fill="none" height="1em" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                        </svg>
+                    </div>
+                    <div>
+                        Publish a without centralized repositories. Take advantage of browser-based inferences. Enjoy zero-backend privacy for your AI model
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

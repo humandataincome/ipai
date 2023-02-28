@@ -1,0 +1,16 @@
+{
+  "name": "ipai-demo-node",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "ts-node src/index.ts"
+  },
+  "dependencies": {
+    "ipai": "file:../../"
+  },
+  "devDependencies": {
+    "@types/node": "^18.13.0",
+    "typescript": "^4.9.5",
+    "ts-node": "^10.9.1"
+  }
+}

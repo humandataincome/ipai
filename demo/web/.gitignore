@@ -3,11 +3,6 @@
 # Learn more about .gitignore:
 #     https://www.atlassian.com/git/tutorials/saving-changes/gitignore
 
-scripts/python/models/
-scripts/python/env
-build/
-.github/
-
 # Node artifact files
 node_modules/
 dist/
@@ -55,8 +50,3 @@ Thumbs.db
 # ENV files
 
 package-lock.json
-scripts/python/data
-ipfs-ipdw*
-.storage
-.persistence
-

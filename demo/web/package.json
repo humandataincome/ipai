@@ -1,0 +1,23 @@
+{
+  "name": "ipai-demo-web",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start:prod": "webpack serve --target web --mode production",
+    "build:prod": "webpack --target web --mode production",
+    "publish": "IPFS_USERNAME= IPFS_PASSWORD= ts-node scripts/publish.ts"
+  },
+  "dependencies": {
+    "ipai": "file:../../"
+  },
+  "devDependencies": {
+    "html-loader": "^4.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "ts-loader": "^9.4.2",
+    "typescript": "^4.9.5",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.11.1",
+    "ts-node": "^10.9.1"
+  }
+}
