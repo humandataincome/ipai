@@ -1,6 +1,6 @@
 {
   "name": "ipai",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "Andrea Silvi",
   "type": "module",
   "main": "./dist/node/index.js",
