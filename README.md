@@ -4,11 +4,11 @@ InterPlanetary Artificial Intelligence (IPAI): store your personal AI model leve
 IPDW). It enables to build a real censorship resistant research swarm without centralised repositories. Browser based
 inferences, Personal fine-tuning, Zero-backend privacy, and much more.
 
-<p align="center"><em>Check it out the demo distributed via ipfs at <a href="https://ipfs.io/ipfs/QmQSYXFNg9QjWiWDcmvwsmuXi8ukpjCHTgXhw37qM8i2QW/">https://ipfs.io/ipfs/QmQSYXFNg9QjWiWDcmvwsmuXi8ukpjCHTgXhw37qM8i2QW/</a></em></p>
+<p align="center"><em>Check it out the demo distributed via ipfs at <a href="https://ipfs.io/ipfs/QmW98fovtPYpdRHTyCM9v4qhe151Dn8iNPofibQ2e5T1bq/">https://ipfs.io/ipfs/QmW98fovtPYpdRHTyCM9v4qhe151Dn8iNPofibQ2e5T1bq/</a></em></p>
 
 ![Logo](demo/web/assets/demo.png)
 
-<p align="center"><em>Alternative access via other gateway or directly via ipfs:// protocol on supported browser using this IPFS CID QmQSYXFNg9QjWiWDcmvwsmuXi8ukpjCHTgXhw37qM8i2QW/</em></p>
+<p align="center"><em>Alternative access via other gateway or directly via ipfs:// protocol on supported browser using this IPFS CID QmW98fovtPYpdRHTyCM9v4qhe151Dn8iNPofibQ2e5T1bq/</em></p>
 
 
 ## Features
