@@ -62,6 +62,11 @@ We welcome contributions to IPAI! If you would like to contribute, please follow
 
 If you need help using IPAI or have any questions, please open an issue in this repository and we will be happy to assist you.
 
+## TODO
+
+- Migrate matrices computation to NumTs (https://github.com/ansi-code/numts)
+- Custom sparse matrices backend
+
 ## License
 
 This project is licensed under the Apache 2.0 License. See the [LICENSE](./LICENSE) file for details.
