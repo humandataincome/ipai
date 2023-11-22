@@ -1,6 +1,6 @@
 FROM python:3.8
 
-RUN pip install onnx onnxruntime datasets #optimum
+RUN pip install onnx onnxruntime datasets tf2onnx #optimum
 
 RUN pip install git+https://github.com/huggingface/optimum.git
 

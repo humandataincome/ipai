@@ -1,12 +1,13 @@
 {
   "name": "ipai",
-  "version": "1.1.2",
+  "version": "1.1.4",
   "author": "Andrea Silvi",
   "type": "module",
   "main": "./dist/node/index.js",
   "browser": "./dist/web/index.js",
   "types": "./dist/@types/index.d.ts",
   "scripts": {
+    "start:test": "ts-node test/index.ts",
     "test": "ts-mocha --timeout 60000 test/*.ts",
     "build:prod": "webpack --mode production",
     "build:prod:watch": "webpack --mode production --watch",
@@ -31,7 +32,9 @@
     "onnxruntime-common": "^1.14.0",
     "onnxruntime-node": "^1.14.0",
     "onnxruntime-web": "^1.14.0",
-    "path-browserify": "^1.0.1"
+    "path-browserify": "^1.0.1",
+    "@tensorflow/tfjs": "^4.9.0",
+    "@tensorflow/tfjs-tflite": "^0.0.1-alpha.10"
   },
   "devDependencies": {
     "@types/chai": "^4.3.4",
