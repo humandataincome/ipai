@@ -40,7 +40,7 @@ Start using IPAI.
 
 ```js
 const model = await GPTNeoXForCausalLm.Load("ipfs://QmecpDvGdWfcKw7BM4nxyEb7TB856sTY1MqY1dCR45rWjv", console.log);
-const tokenizer = await BertTokenizer.Load('ipfs://QmRnFHciVJxtpTtGktB3vLRMMxutEaAybXvwobXKLxRpd9', 'ipfs://QmQWBu2Cd4KnBGeeT9dx7JSG6v9VJg1QeiDg3EbBtSLKkD', console.log);
+const tokenizer = await GPT2Tokenizer.Load('ipfs://QmRnFHciVJxtpTtGktB3vLRMMxutEaAybXvwobXKLxRpd9', 'ipfs://QmQWBu2Cd4KnBGeeT9dx7JSG6v9VJg1QeiDg3EbBtSLKkD', console.log);
 
 const prompt = "In a shocking finding, scientists discovered a herd of unicorns living in a remote, previously unexplored valley, in the Andes Mountains.\nEven more surprising to the researchers was the fact that the unicorns spoke perfect English.";
 const inputIds = tokenizer.encode(prompt);
