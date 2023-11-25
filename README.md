@@ -6,7 +6,7 @@ inferences, Personal fine-tuning, Zero-backend privacy, and much more.
 
 <p align="center"><em>Check it out the demo distributed via ipfs at <a href="https://ipfs.io/ipfs/QmW98fovtPYpdRHTyCM9v4qhe151Dn8iNPofibQ2e5T1bq/">https://ipfs.io/ipfs/QmW98fovtPYpdRHTyCM9v4qhe151Dn8iNPofibQ2e5T1bq/</a></em></p>
 
-![Logo](demo/web/assets/demo.png)
+![Logo](demo/gpt/assets/demo.png)
 
 <p align="center"><em>Alternative access via other gateway or directly via ipfs:// protocol on supported browser using this IPFS CID QmW98fovtPYpdRHTyCM9v4qhe151Dn8iNPofibQ2e5T1bq/</em></p>
 

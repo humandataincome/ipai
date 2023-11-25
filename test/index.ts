@@ -1,10 +1,18 @@
-//import * as tflite from '@tensorflow/tfjs-tflite';
+// @ts-ignore
+import * as tflite from '@tensorflow/tfjs-tflite/dist/tf-tflite.node.js';
+import * as tf from '@tensorflow/tfjs-core';
+import * as tfcpu from '@tensorflow/tfjs-backend-cpu';
+
+import * as fs from 'fs';
 
 async function main() {
-    //const classifier = await tflite.BertNLClassifier.create('model.tflite');
-    //const probabilities = classifier.classify('github.com');
-    //console.log(probabilities);
+    await tf.setBackend('cpu')
+    const modelBuff = fs.readFileSync('test/model.tflite')
+    const classifier = await tflite.BertNLClassifier.create(modelBuff);
+    const probabilities = classifier.classify('github.com');
+    console.log(probabilities);
 
+    /*
     const probabilities = [
             {probability: 0.007176657672971487, className: "-2"},
             {probability: 0.045808203518390656, className: "1"},
@@ -14,7 +22,7 @@ async function main() {
 
     const max = probabilities.reduce((p, c) => p.probability > c.probability ? p : c);
     console.log(max);
-
+*/
 }
 
 (async () => {

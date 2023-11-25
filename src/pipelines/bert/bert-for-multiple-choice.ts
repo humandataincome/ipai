@@ -1,27 +1,32 @@
 import * as ipdw from "ipdw";
-import * as tflite from '@tensorflow/tfjs-tflite';
+import ort, {InferenceSession} from "../../utils/onnxruntime";
 
 
 export class BertForMultipleChoice {
-    private classifier: tflite.BertNLClassifier;
+    private session: InferenceSession;
 
-    constructor(classifier: tflite.BertNLClassifier) {
-        this.classifier = classifier;
+    constructor(session: InferenceSession) {
+        this.session = session;
     }
 
     public static async Load(path: string, progress?: ((progress: number) => void) | undefined): Promise<BertForMultipleChoice> {
+        ort.env.wasm.numThreads = 1;
+
         const persistence = await ipdw.Persistence.getInstance();
         const file = await persistence.fetchOrGet(path, progress);
 
-        const classifier = await tflite.BertNLClassifier.create(file!.buffer);
+        const session = await ort.InferenceSession.create(file!, {
+            executionProviders: [typeof window === 'undefined' ? "cpu" : "wasm"],
+            graphOptimizationLevel: "all",
+        });
 
-        return new BertForMultipleChoice(classifier);
+        return new BertForMultipleChoice(session);
     }
 
-    public async generate(input: string): Promise<string> {
-        const probabilities = this.classifier.classify(input);
-        const max = probabilities.reduce((p, c) => p.probability > c.probability ? p : c);
-        return max.className;
+    public async generate(input: string): Promise<number> {
+        const probabilities = [0.8, 0.5]
+        const max = probabilities.reduce((p, c) => p > c ? p : c);
+        return max;
     }
 
 }
