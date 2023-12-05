@@ -1,6 +1,6 @@
 {
   "name": "ipai",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "author": "Andrea Silvi",
   "type": "module",
   "main": "./dist/node/index.js",
@@ -38,7 +38,7 @@
     "@types/chai": "^4.3.11",
     "@types/expect": "^24.3.0",
     "@types/mocha": "^10.0.6",
-    "@types/node": "^20.10.0",
+    "@types/node": "^20.10.3",
     "@types/numjs": "^0.16.7",
     "chai": "^4.3.10",
     "clean-webpack-plugin": "^4.0.0",

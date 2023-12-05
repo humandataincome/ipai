@@ -1,28 +1,15 @@
-// @ts-ignore
-import * as tflite from '@tensorflow/tfjs-tflite/dist/tf-tflite.node.js';
-import * as tf from '@tensorflow/tfjs-core';
-import * as tfcpu from '@tensorflow/tfjs-backend-cpu';
-
-import * as fs from 'fs';
+import {BertForMultipleChoice} from "../src";
+import {BertTokenizer} from "../src/pipelines/bert/bert.tokenizer";
 
 async function main() {
-    await tf.setBackend('cpu')
-    const modelBuff = fs.readFileSync('test/model.tflite')
-    const classifier = await tflite.BertNLClassifier.create(modelBuff);
-    const probabilities = classifier.classify('github.com');
-    console.log(probabilities);
+    const model = await BertForMultipleChoice.Load("ipfs://QmQUC5PdyBGZ3e6ELrgarcryK2cY5gDc5E8ao2mWeUDhk8", console.log);
+    const tokenizer = await BertTokenizer.Load('ipfs://QmZrLNyDu3wXqq5s7vARUgVjWm4aUZuin13828LjAqTDgz', console.log);
 
-    /*
-    const probabilities = [
-            {probability: 0.007176657672971487, className: "-2"},
-            {probability: 0.045808203518390656, className: "1"},
-            {probability: 0.5899108648300171, className: "126"},
-            {probability: 0.001831017667427659, className: "149"},
-            {probability: 0.0007152417092584074, className: "180"}];
+    const prompt = "google.com";
+    const inputIds = tokenizer.encode(prompt);
 
-    const max = probabilities.reduce((p, c) => p.probability > c.probability ? p : c);
-    console.log(max);
-*/
+    const genClass = await model.generate(inputIds);
+    console.log(genClass)
 }
 
 (async () => {
