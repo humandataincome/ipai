@@ -113,7 +113,7 @@ export class BertTokenizer {
         });
     }
 
-    public encode(text: string) {
+    tokenize(text: string) {
         // Source:
         // https://github.com/google-research/bert/blob/88a817c37f788702a363ff935fd173b6dc6ac0d6/tokenization.py#L311
         let outputTokens: number[] = [];
@@ -156,5 +156,9 @@ export class BertTokenizer {
         }
 
         return outputTokens;
+    }
+
+    public encode(text: string) {
+        return [this.tokenize('[CLS]')[0], ...this.tokenize(text), this.tokenize('[SEP]')[0]]
     }
 }

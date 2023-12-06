@@ -1,4 +1,4 @@
-import {BertForMultipleChoice} from "ipai";
+import {BertForMultipleChoice, BertTokenizer} from "ipai";
 
 const categories = {
     '1': '/Arts & Entertainment',
@@ -354,9 +354,14 @@ const categories = {
 }
 
 async function main() {
-    const bert = await BertForMultipleChoice.Load('model.tflite');
-    const res = await bert.generate('github.com');
-    console.log(categories[res])
+    const model = await BertForMultipleChoice.Load("ipfs://QmaX3qSHNe9yweJuN2YA7aMcCYCq8EZS6gHZy31X5sdz9s", console.log);
+    const tokenizer = await BertTokenizer.Load('ipfs://QmZrLNyDu3wXqq5s7vARUgVjWm4aUZuin13828LjAqTDgz', console.log);
+
+    const text = "google.com".replace('.', ' ');
+    const inputIds = tokenizer.encode(text);
+
+    const genClasses = await model.generate(inputIds);
+    console.log(genClasses)
 }
 
 (async () => {

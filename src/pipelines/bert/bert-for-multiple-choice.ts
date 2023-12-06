@@ -1,7 +1,6 @@
 import * as ipdw from "ipdw";
 import ort, {InferenceSession} from "../../utils/onnxruntime";
 import nj from "numjs";
-import {TensorUtils} from "../../utils/tensor";
 
 
 export class BertForMultipleChoice {
@@ -25,13 +24,13 @@ export class BertForMultipleChoice {
         return new BertForMultipleChoice(session);
     }
 
-    public async generate(inputIds: number[]): Promise<number> {
+    public async generate(inputIds: number[]): Promise<number[]> {
         const maxLength = 16;
         if (inputIds.length < maxLength)
             inputIds = inputIds.concat(Array(maxLength - inputIds.length).fill(0));
         else if (inputIds.length > maxLength)
             inputIds = inputIds.slice(0, 16)
-        const inputIdsTensor = new ort.Tensor("int64", BigInt64Array.from(inputIds.map(v => BigInt(v ? v !== 0 : 0))), [1, maxLength]);
+        const inputIdsTensor = new ort.Tensor("int64", BigInt64Array.from(inputIds.map(v => BigInt(v))), [1, maxLength]);
         const attentionMaskTensor = new ort.Tensor("int64", BigInt64Array.from(inputIds.map(v => BigInt(1 ? v !== 0 : 0))), [1, maxLength]);
 
         const output = await this.session.run({
@@ -39,11 +38,17 @@ export class BertForMultipleChoice {
             'attention_mask': attentionMaskTensor
         });
 
+
         let logits = nj.array(output.logits.data as Float32Array, 'float32').reshape(...output.logits.dims);
         logits = logits.flatten();
-        logits = nj.softmax(logits.subtract(logits.max()));
-        const bestClass = TensorUtils.argmax(logits)
-        return bestClass?.get(0) as number;
+        logits = nj.sigmoid(logits);
+
+        const res = [];
+        for (let i = 0; i < logits.shape[logits.shape.length - 1]; i++)
+            if (logits.get(i) > 0.2)
+                res.push(i);
+
+        return res;
     }
 
 }
