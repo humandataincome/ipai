@@ -1,6 +1,6 @@
 {
   "name": "ipai",
-  "version": "1.1.9",
+  "version": "1.2.0",
   "author": "Andrea Silvi",
   "type": "module",
   "main": "./dist/node/index.js",
@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/ansi-code/ipai#readme",
   "dependencies": {
-    "ipdw": "^1.5.7",
+    "ipdw": "^1.5.10",
     "numjs": "^0.16.1",
     "onnxruntime-common": "^1.16.3",
     "onnxruntime-node": "^1.16.3",
@@ -47,7 +47,7 @@
     "ts-loader": "^9.5.1",
     "ts-mocha": "^10.0.0",
     "ts-node": "^10.9.1",
-    "typescript": "^5.3.2",
+    "typescript": "^5.3.3",
     "webpack": "^5.89.0",
     "webpack-cli": "^5.1.4",
     "webpack-merge": "^5.10.0",

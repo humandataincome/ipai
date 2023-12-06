@@ -31,13 +31,13 @@ export class BertForMultipleChoice {
         else if (inputIds.length > maxLength)
             inputIds = inputIds.slice(0, 16)
         const inputIdsTensor = new ort.Tensor("int64", BigInt64Array.from(inputIds.map(v => BigInt(v))), [1, maxLength]);
-        const attentionMaskTensor = new ort.Tensor("int64", BigInt64Array.from(inputIds.map(v => BigInt(1 ? v !== 0 : 0))), [1, maxLength]);
+        //const attentionMaskTensor = new ort.Tensor("int64", BigInt64Array.from(inputIds.map(v => BigInt(1 ? v !== 0 : 0))), [1, maxLength]);
 
+        //console.log(this.session.inputNames)
         const output = await this.session.run({
             'input_ids': inputIdsTensor,
-            'attention_mask': attentionMaskTensor
+            //'attention_mask': attentionMaskTensor
         });
-
 
         let logits = nj.array(output.logits.data as Float32Array, 'float32').reshape(...output.logits.dims);
         logits = logits.flatten();
@@ -45,7 +45,7 @@ export class BertForMultipleChoice {
 
         const res = [];
         for (let i = 0; i < logits.shape[logits.shape.length - 1]; i++)
-            if (logits.get(i) > 0.2)
+            if (logits.get(i) > 0.15)
                 res.push(i);
 
         return res;

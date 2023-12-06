@@ -1,6 +1,6 @@
 import {BertForMultipleChoice, BertTokenizer} from "ipai";
 
-const categories = {
+const categories: { [key: string]: string } = {
     '1': '/Arts & Entertainment',
     '2': '/Arts & Entertainment/Acting & Theater',
     '3': '/Arts & Entertainment/Comics',
@@ -354,15 +354,32 @@ const categories = {
 }
 
 async function main() {
-    const model = await BertForMultipleChoice.Load("ipfs://QmaX3qSHNe9yweJuN2YA7aMcCYCq8EZS6gHZy31X5sdz9s", console.log);
-    const tokenizer = await BertTokenizer.Load('ipfs://QmZrLNyDu3wXqq5s7vARUgVjWm4aUZuin13828LjAqTDgz', console.log);
+    const model = await BertForMultipleChoice.Load("https://asset.humandataincome.com/ipai/bdc1/bert_domain_classifier.onnx", console.log);
+    const tokenizer = await BertTokenizer.Load('https://asset.humandataincome.com/ipai/bdc1/vocab.json', console.log);
 
-    const text = "google.com".replace('.', ' ');
-    const inputIds = tokenizer.encode(text);
+    const domains = ['whatsapp.com', 'github.com', 'facebook.com'];
 
-    const genClasses = await model.generate(inputIds);
-    console.log(genClasses)
+    let classes: { [key: number]: number } = {};
+    for (let i = 1; i <= 349; i++)
+        classes[i] = 0;
+
+    for (const d of domains) {
+        const text = d.replace('.', ' ');
+        const inputIds = tokenizer.encode(text);
+        const genClasses = await model.generate(inputIds);
+        for (const c of genClasses)
+            if (c < 349)
+                classes[c] += 1
+    }
+
+    const bestClasses = Object.entries(classes)
+        .sort((a, b) => b[1] - a[1])
+        .map(v => [categories[v[0]], [v[1]]])
+        .slice(0, 10);
+
+    console.log(bestClasses)
 }
+
 
 (async () => {
     await main();
