@@ -2,6 +2,10 @@ import * as ipdw from "ipdw";
 import ort, {InferenceSession} from "../../utils/onnxruntime";
 import nj from "numjs";
 
+//const ENVIRONMENT_IS_NODE = typeof process === 'object' && typeof require === 'function';
+//const ENVIRONMENT_IS_WEB = typeof window === 'object';
+//const ENVIRONMENT_IS_WORKER = typeof importScripts === 'function';
+//const ENVIRONMENT_IS_SHELL = !ENVIRONMENT_IS_WEB && !ENVIRONMENT_IS_NODE && !ENVIRONMENT_IS_WORKER;
 
 export class BertForMultipleChoice {
     private session: InferenceSession;
@@ -16,8 +20,10 @@ export class BertForMultipleChoice {
         const persistence = await ipdw.Persistence.getInstance();
         const file = await persistence.fetchOrGet(path, progress);
 
+        const provider = typeof window === 'object' || typeof importScripts === 'function' ? 'wasm' : 'cpu';
+
         const session = await ort.InferenceSession.create(file!, {
-            executionProviders: [typeof window === 'undefined' ? "cpu" : "wasm"],
+            executionProviders: [provider],
             graphOptimizationLevel: "all",
         });
 

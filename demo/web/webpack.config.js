@@ -9,6 +9,7 @@ const __dirname = path.dirname(__filename);
 export default (env, argv) => ({
         target: 'web',
         context: __dirname,
+        devtool: 'inline-source-map',
 
         entry: {
             index: './src/index.ts',

@@ -44,6 +44,7 @@ const commonsConfig = {
 export default (env, argv) => ([
     webpackMerge(commonsConfig, {
         target: 'web',
+        devtool: 'inline-source-map',
 
         resolve: {
             alias: {
