@@ -1,11 +1,5 @@
 import * as ipdw from "ipdw";
 import ort, {InferenceSession} from "../../utils/onnxruntime";
-import nj from "numjs";
-
-//const ENVIRONMENT_IS_NODE = typeof process === 'object' && typeof require === 'function';
-//const ENVIRONMENT_IS_WEB = typeof window === 'object';
-//const ENVIRONMENT_IS_WORKER = typeof importScripts === 'function';
-//const ENVIRONMENT_IS_SHELL = !ENVIRONMENT_IS_WEB && !ENVIRONMENT_IS_NODE && !ENVIRONMENT_IS_WORKER;
 
 export class BertForMultipleChoice {
     private session: InferenceSession;
@@ -45,13 +39,14 @@ export class BertForMultipleChoice {
             //'attention_mask': attentionMaskTensor
         });
 
-        let logits = nj.array(output.logits.data as Float32Array, 'float32').reshape(...output.logits.dims);
-        logits = logits.flatten();
-        logits = nj.sigmoid(logits);
+        const logits = new Float32Array(output.logits.data.length);
+
+        for (let i = 0; i < output.logits.data.length; i++)
+            logits[i] = 1 / (1 + Math.exp(-output.logits.data[i] as number));
 
         const res = [];
-        for (let i = 0; i < logits.shape[logits.shape.length - 1]; i++)
-            if (logits.get(i) > 0.15)
+        for (let i = 0; i < logits.length; i++)
+            if (logits[i] > 0.15)
                 res.push(i);
 
         return res;
