@@ -1,7 +1,7 @@
 {
   "name": "ipai",
-  "version": "1.2.3",
-  "author": "Andrea Silvi",
+  "version": "1.2.4",
+  "author": "humandataincome",
   "type": "module",
   "main": "./dist/node/index.js",
   "browser": "./dist/web/index.js",
@@ -19,13 +19,13 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ansi-code/ipai.git"
+    "url": "git+https://github.com/humandataincome/ipai.git"
   },
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/ansi-code/ipai/issues"
+    "url": "https://github.com/humandataincome/ipai/issues"
   },
-  "homepage": "https://github.com/ansi-code/ipai#readme",
+  "homepage": "https://github.com/humandataincome/ipai#readme",
   "dependencies": {
     "ipdw": "^1.5.10",
     "numjs": "^0.16.1",
